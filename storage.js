@@ -1,37 +1,63 @@
-const CHAVE = 'habitos';
 
-// lê a lista salva (ou começa vazia)
-let habitos = JSON.parse(localStorage.getItem(CHAVE)) || [];
+function carregar(chave, padrao) {
+  return JSON.parse(localStorage.getItem(chave)) || padrao;
+}
 
-// grava a lista no localStorage
+
+let categorias = carregar('categorias', null);
+let habitos    = carregar('habitos', []);
+let registros  = carregar('registros', []);
+
+
+if (!categorias) {
+  categorias = [
+    { id: 1, nome: 'Saúde' },
+    { id: 2, nome: 'Estudo' },
+    { id: 3, nome: 'Bem-estar' }
+  ];
+  salvar();
+}
+
+
 function salvar() {
-  localStorage.setItem(CHAVE, JSON.stringify(habitos));
+  localStorage.setItem('categorias', JSON.stringify(categorias));
+  localStorage.setItem('habitos', JSON.stringify(habitos));
+  localStorage.setItem('registros', JSON.stringify(registros));
 }
 
-// devolve a data de hoje no formato '2026-11-15'
+
 function hoje() {
-  return new Date().toLocaleDateString('sv-SE');
+  return new Date().toLocaleDateString('sv-SE');   // formato AAAA-MM-DD
 }
-
-// protege contra HTML digitado pelo usuário
-function esc(t) {
-  return String(t).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-}
-
-// data de N dias atrás, no formato AAAA-MM-DD
 function diasAtras(n) {
   const d = new Date();
   d.setDate(d.getDate() - n);
   return d.toLocaleDateString('sv-SE');
 }
 
-// quantos dias seguidos o hábito foi cumprido
+
+function nomeCategoria(h) {
+  const c = categorias.find(c => c.id === h.categoriaId);
+  return c ? c.nome : 'Sem categoria';
+}
+
+function datasDe(h) {
+  return registros.filter(r => r.habitoId === h.id).map(r => r.data);
+}
+function feitoHoje(h) {
+  return datasDe(h).includes(hoje());
+}
 function sequencia(h) {
-  let n = h.dias.includes(hoje()) ? 0 : 1;   // se hoje ainda não foi feito, conta a partir de ontem
+  const datas = datasDe(h);
+  let n = datas.includes(hoje()) ? 0 : 1;   // se hoje ainda não foi feito, conta a partir de ontem
   let total = 0;
-  while (h.dias.includes(diasAtras(n))) {
+  while (datas.includes(diasAtras(n))) {
     total++;
     n++;
   }
   return total;
+}
+
+function esc(t) {
+  return String(t ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 }

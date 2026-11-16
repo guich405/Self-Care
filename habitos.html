@@ -32,10 +32,41 @@
   </div>
 </nav>
 <main class="container py-4">
-<div class="container-fluid">
-    <h1 class="text-center">Meus hábitos</h1>
-    <input type="search" id="busca" class="form-control mb-4"
-       placeholder="Buscar hábito..." aria-label="Buscar hábito">
+<div class="row g-2 mb-3">
+  <div class="col-md-6">
+    <label for="busca" class="form-label">Buscar</label>
+    <input type="search" id="busca" class="form-control" placeholder="Nome do hábito...">
+  </div>
+  <div class="col-6 col-md-3">
+    <label for="filtroCategoria" class="form-label">Categoria</label>
+    <select id="filtroCategoria" class="form-control">
+      <option value="">Todas</option>
+       <option value="Saúde">Saúde</option>
+    <option value="Estudo">Estudo</option>
+    <option value="Livrar-se de um mau habíto">Livrar-se de um mau habíto</option>
+    <option value="Treino">Treino</option>
+    <option value="Alimentação">Alimentação</option>
+    </select>
+  </div>
+  <div class="col-6 col-md-3">
+    <label for="filtroStatus" class="form-label">Hoje</label>
+    <select id="filtroStatus" class="form-control">
+      <option value="">Todos</option>
+      <option value="feito">Feitos hoje</option>
+      <option value="pendente">Pendentes</option>
+    </select>
+  </div>
+</div>
+
+<div class="d-flex justify-content-between align-items-center mb-3">
+  <small id="contador"></small>
+  <button type="button" id="limparFiltros" class="btn btn-cancelar btn-sm">Limpar filtros</button>
+</div>
+
+<div>
+    <ul id="lista">
+        
+    </ul>
 </div>
 
 <button class="btn btn-verde btn-sm" data-bs-toggle="dialog" data-bs-target="#modalEditar">Editar</button>
@@ -55,8 +86,10 @@
       <label for="editCategoria" class="form-label">Categoria</label>
       <select class="form-label" id="editCategoria">
         <option value="Saúde">Saúde</option>
-        <option value="Estudo">Estudo</option>
-        <option value="Abandonar hábito">Abandonar hábito</option>
+    <option value="Estudo">Estudo</option>
+    <option value="Livrar-se de um mau habíto">Livrar-se de um mau habíto</option>
+    <option value="Treino">Treino</option>
+    <option value="Alimentação">Alimentação</option>
       </select>
     </div>
     <div class="mb-3">
