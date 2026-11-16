@@ -14,6 +14,7 @@ if (!categorias) {
     { id: 1, nome: 'Saúde' },
     { id: 2, nome: 'Estudo' },
     { id: 3, nome: 'Bem-estar' }
+    
   ];
   salvar();
 }

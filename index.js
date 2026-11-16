@@ -3,15 +3,14 @@ const resumo = document.getElementById('resumo')
 
 function desenhar() {
   if (habitos.length === 0) {
-    lista.innerHTML = '<p>Nenhum hábito ainda. <a href="novo.html">Crie o primeiro!</a></p>';
+    lista.innerHTML = '<p>Nenhum hábito ainda. <a href="novo.html">Crie o primeiro!</a></p>'
     resumo.textContent = ''
-    return;
+    barra.style.width = '0%'
+    return
     
   }
-  const barra = document.getElementById('barra');
-const pct = Math.round(feitos / habitos.length * 100);
-barra.style.width = pct + '%';
-barra.setAttribute('aria-valuenow', pct);
+  
+  
 
   lista.innerHTML = habitos.map(h => {
     const feito = feitoHoje(h)
@@ -24,10 +23,15 @@ barra.setAttribute('aria-valuenow', pct);
           <span class="badge badge-cat">${esc(nomeCategoria(h))}</span></label>
         <span>${seq} ${seq === 1 ? 'dia seguido' : 'dias seguidos'}</span>
       </div>`
+      
   }).join('')
 
   const feitos = habitos.filter(feitoHoje).length
   resumo.textContent = `${feitos} de ${habitos.length} concluídos hoje`
+  const barra = document.getElementById('barra');
+const pct = Math.round(feitos / habitos.length * 100);
+barra.style.width = pct + '%';
+barra.setAttribute('aria-valuenow', pct);
 }
 
 function alternar(id) {

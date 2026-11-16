@@ -124,3 +124,13 @@ font: var(--fonte);}
 .dia.feito { background: var(--verde-600); }
 
 .habito, .card-num, .dialog { color: var(--verde-900); }
+
+.progress {
+  height: 1rem;
+  background: var(--verde-200);
+  border-radius: var(--raio);
+}
+.progress-bar {
+  background: var(--verde-600);
+  border-radius: var(--raio);
+}
