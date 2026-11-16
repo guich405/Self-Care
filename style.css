@@ -1,0 +1,126 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;800&display=swap');
+
+:root {
+ 
+  --verde-900: #0f3d2e;   /* Texto e navbar */
+  --verde-600: #1f7a52;   /* Botões e destaques */
+  --verde-400: #106440;   /* Modal */
+  --verde-200: #bfe8d2;   /* Bordas e hábito concluído */
+  --verde-100: #e3f5ec;   /* Fundo dos cards */
+  --verde-50:  #f2fbf6;   /* Fundo da página */
+  --perigo:    #c0392b;   /* Excluir */
+
+  --raio: 14px;           
+  --fonte: 'Nunito', sans-serif;
+}
+body {
+  background: var(--verde-900);
+  color: var(--verde-900);
+  font-family: var(--fonte);
+}
+
+h1, h2, p{ color: var(--verde-50); 
+    font-weight: 800; }
+h1 { margin-bottom: 1.5rem; }
+
+.navbar-verde { background: color #303a2f; }
+.navbar-verde .navbar-brand { color: #26b821; font-weight: 800; }
+.navbar-verde .nav-link { color: var(--verde-200); }
+.navbar-verde .nav-link:hover { color: #176410; }
+.navbar-verde .nav-link.active { background: var(--verde-600); color: #fff; }
+.form-check-input:checked { background-color: var(--verde-600); border-color: var(--verde-600); }
+
+.btn-verde {
+  background: var(--verde-600);
+  color: #fff;
+  border: 0;
+  border-radius: var(--raio);
+  font-weight: 600;
+  padding: .5rem 1.2rem;
+}
+
+.btn-cinza {
+  background: var(--verde-200);
+  color: #3b443b;
+  border: 0;
+  border-radius: var(--raio);
+  font-weight: 600;
+  padding: .5rem 1.2rem;
+}
+
+.btn-verde:hover { background: var(--verde-900); color: #fff; }
+
+.btn-perigo {
+  background: transparent;
+  color: var(--perigo);
+  border: 2px solid var(--perigo);
+  border-radius: var(--raio);
+}
+.btn-perigo:hover { background: var(--perigo); color: #fff; }
+
+.habito {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  background: var(--verde-100);
+  border: 2px solid var(--verde-200);
+  border-radius: var(--raio);
+  padding: 1rem 1.2rem;
+  margin-bottom: .8rem;
+}
+.habito label { flex-grow: 1; font-weight: 600; }
+.habito input { width: 1.6rem; height: 1.6rem; }
+
+/* hábito concluído hoje */
+.habito.feito { background: var(--verde-200); border-color: var(--verde-600); }
+.habito.feito label { text-decoration: line-through; opacity: .7; }
+
+/* a caixinha marcada também fica verde */
+.form-check-input:checked {
+  background-color: var(--verde-600);
+  border-color: var(--verde-600);
+}
+
+.form-control:focus, .form-select:focus {
+  border-color: var(--verde-600);
+  box-shadow: 0 0 0 .25rem rgba(31, 122, 82, .25);
+}
+
+.progress {
+  --bs-progress-bar-bg: var(--verde-600);
+  --bs-progress-bg: var(--verde-200);
+  border-radius: var(--raio);
+}
+
+.badge-cat {
+  background: var(--verde-600);
+  color: #fff;
+  border-radius: var(--raio);
+}
+
+.dialog { background: var(--verde-400);
+     color: var(--verde-900);
+    border: 2px solid var(--verde-200);
+     border-radius: var(--raio);
+     
+     }
+
+.form-label { color: var(--verde-50); 
+font: var(--fonte);}
+
+.form-control {
+    background-color: var(--verde-50);
+    color: #021601;
+}
+
+.card-num { background: var(--verde-100); border: 2px solid var(--verde-200);
+            border-radius: var(--raio); padding: 1rem; text-align: center; }
+.card-num .num { display: block; font-size: 2rem; font-weight: 800; }
+
+.dia { width: 1.6rem; 
+    height: 1.6rem;
+    border-radius: 6px;
+    background: var(--verde-200); }
+.dia.feito { background: var(--verde-600); }
+
+.habito, .card-num, .dialog { color: var(--verde-900); }
