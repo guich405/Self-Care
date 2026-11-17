@@ -1,65 +1,67 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;800&display=swap');
 
 :root {
- 
-  --verde-900: #0f3d2e;   /* Texto e navbar */
+  --verde-900: #0f3d2e;   /* Fundo da página e texto escuro */
   --verde-600: #1f7a52;   /* Botões e destaques */
-  --verde-400: #106440;   /* Modal */
   --verde-200: #bfe8d2;   /* Bordas e hábito concluído */
   --verde-100: #e3f5ec;   /* Fundo dos cards */
-  --verde-50:  #f2fbf6;   /* Fundo da página */
-  --perigo:    #c0392b;   /* Excluir */
+  --verde-50:  #f2fbf6;   /* Texto claro e fundo da janela de edição */
+  --cinza-nav: #303a2f;   /* Barra de navegação */
+  --marca:     #26b821;   /* Logo */
+  --perigo:    #c0392b;   /* Excluir e erros */
 
-  --raio: 14px;           
+  --raio: 14px;
   --fonte: 'Nunito', sans-serif;
 }
+
+/* Garante que o atributo hidden sempre esconda, mesmo com classes que mudam o display */
+[hidden] { display: none !important; }
+
 body {
   background: var(--verde-900);
-  color: var(--verde-900);
+  color: var(--verde-50);
   font-family: var(--fonte);
 }
 
-h1, h2, p{ color: var(--verde-50); 
-    font-weight: 800; }
+h1, h2, p { color: var(--verde-50); font-weight: 800; }
 h1 { margin-bottom: 1.5rem; }
+a { color: var(--verde-200); }
+a:hover { color: #fff; }
 
-.navbar-verde { background: color #303a2f; }
-.navbar-verde .navbar-brand { color: #26b821; font-weight: 800; }
+/* ---------- Navegação ---------- */
+.navbar-verde { background: var(--cinza-nav); }
+.navbar-verde .navbar-brand { color: var(--marca); font-weight: 800; }
 .navbar-verde .nav-link { color: var(--verde-200); }
-.navbar-verde .nav-link:hover { color: #176410; }
+.navbar-verde .nav-link:hover { color: #fff; }
 .navbar-verde .nav-link.active { background: var(--verde-600); color: #fff; }
-.form-check-input:checked { background-color: var(--verde-600); border-color: var(--verde-600); }
 
-.btn-verde {
-  background: var(--verde-600);
-  color: #fff;
-  border: 0;
+/* ---------- Botões ---------- */
+.btn-verde, .btn-cinza, .btn-perigo {
   border-radius: var(--raio);
   font-weight: 600;
   padding: .5rem 1.2rem;
 }
-
-.btn-cinza {
-  background: var(--verde-200);
-  color: #3b443b;
-  border: 0;
-  border-radius: var(--raio);
-  font-weight: 600;
-  padding: .5rem 1.2rem;
-}
-
+.btn-verde { background: var(--verde-600); color: #fff; border: 0; }
 .btn-verde:hover { background: var(--verde-900); color: #fff; }
-
-.btn-perigo {
-  background: transparent;
-  color: var(--perigo);
-  border: 2px solid var(--perigo);
-  border-radius: var(--raio);
-}
+.btn-cinza { background: var(--verde-200); color: #3b443b; border: 0; }
+.btn-cinza:hover { background: var(--verde-100); color: #3b443b; }
+.btn-perigo { background: transparent; color: var(--perigo); border: 2px solid var(--perigo); }
 .btn-perigo:hover { background: var(--perigo); color: #fff; }
+.btn-sm { padding: .25rem .8rem; font-size: .875rem; }
 
+/* ---------- Avisos ---------- */
+.alert-erro, .alert-sucesso {
+  border-radius: var(--raio);
+  padding: .75rem 1rem;
+  font-weight: 600;
+}
+.alert-erro { background: #fdecea; color: var(--perigo); border: 2px solid var(--perigo); }
+.alert-sucesso { background: var(--verde-100); color: var(--verde-900); border: 2px solid var(--verde-600); }
+
+/* ---------- Hábitos ---------- */
 .habito {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   gap: 1rem;
   background: var(--verde-100);
@@ -68,69 +70,62 @@ h1 { margin-bottom: 1.5rem; }
   padding: 1rem 1.2rem;
   margin-bottom: .8rem;
 }
-.habito label { flex-grow: 1; font-weight: 600; }
-.habito input { width: 1.6rem; height: 1.6rem; }
+.habito label, .habito-info { flex-grow: 1; font-weight: 600; }
+.habito input[type="checkbox"] { width: 1.6rem; height: 1.6rem; flex-shrink: 0; }
 
 /* hábito concluído hoje */
 .habito.feito { background: var(--verde-200); border-color: var(--verde-600); }
 .habito.feito label { text-decoration: line-through; opacity: .7; }
 
 /* a caixinha marcada também fica verde */
-.form-check-input:checked {
-  background-color: var(--verde-600);
-  border-color: var(--verde-600);
-}
+.form-check-input:checked { background-color: var(--verde-600); border-color: var(--verde-600); }
 
-.form-control:focus, .form-select:focus {
+.badge-cat { background: var(--verde-600); color: #fff; border-radius: var(--raio); }
+
+/* ---------- Formulários ---------- */
+.form-label { color: var(--verde-50); font-family: var(--fonte); font-weight: 600; }
+.form-control { background-color: var(--verde-50); color: #021601; }
+.form-control:focus {
   border-color: var(--verde-600);
   box-shadow: 0 0 0 .25rem rgba(31, 122, 82, .25);
 }
 
+/* ---------- Cards de números ---------- */
+.card-num {
+  background: var(--verde-100);
+  border: 2px solid var(--verde-200);
+  border-radius: var(--raio);
+  padding: 1rem;
+  text-align: center;
+  height: 100%;
+}
+.card-num .num { display: block; font-size: 2rem; font-weight: 800; overflow-wrap: anywhere; }
+.card-num .num-texto { font-size: 1.4rem; }
+
+/* ---------- Últimos 7 dias ---------- */
+.dia { width: 1.6rem; height: 1.6rem; border-radius: 6px; background: var(--verde-200); border: 1px solid var(--verde-600); }
+.dia.feito { background: var(--verde-600); }
+
+/* ---------- Barra de progresso ---------- */
 .progress {
   --bs-progress-bar-bg: var(--verde-600);
   --bs-progress-bg: var(--verde-200);
-  border-radius: var(--raio);
-}
-
-.badge-cat {
-  background: var(--verde-600);
-  color: #fff;
-  border-radius: var(--raio);
-}
-
-.dialog { background: var(--verde-400);
-     color: var(--verde-900);
-    border: 2px solid var(--verde-200);
-     border-radius: var(--raio);
-     
-     }
-
-.form-label { color: var(--verde-50); 
-font: var(--fonte);}
-
-.form-control {
-    background-color: var(--verde-50);
-    color: #021601;
-}
-
-.card-num { background: var(--verde-100); border: 2px solid var(--verde-200);
-            border-radius: var(--raio); padding: 1rem; text-align: center; }
-.card-num .num { display: block; font-size: 2rem; font-weight: 800; }
-
-.dia { width: 1.6rem; 
-    height: 1.6rem;
-    border-radius: 6px;
-    background: var(--verde-200); }
-.dia.feito { background: var(--verde-600); }
-
-.habito, .card-num, .dialog { color: var(--verde-900); }
-
-.progress {
   height: 1rem;
   background: var(--verde-200);
   border-radius: var(--raio);
 }
-.progress-bar {
-  background: var(--verde-600);
+.progress-bar { background: var(--verde-600); border-radius: var(--raio); transition: width .3s; }
+
+/* ---------- Janela de edição (dialog do Bootstrap) ---------- */
+.dialog {
+  background: var(--verde-50);
+  color: var(--verde-900);
+  border: 2px solid var(--verde-200);
   border-radius: var(--raio);
 }
+.dialog .form-label { color: var(--verde-900); }
+.dialog-title { font-weight: 800; }
+
+/* texto escuro dentro dos blocos claros */
+.habito, .card-num, .dialog { color: var(--verde-900); }
+.habito p, .card-num p { color: var(--verde-900); }
